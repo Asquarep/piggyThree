@@ -1,18 +1,16 @@
-import hre from "hardhat";
-import EventContract from "../ignition/modules/EventContract";
-import TicketFactory from "../ignition/modules/TicketFactory";
+import { ethers } from "hardhat";
 
 async function main() {
-  console.log("Deploying TicketFactory...");
-  const deployedFactory = await hre.ignition.deploy(TicketFactory);
-  const ticketFactoryAddress = deployedFactory.ticketFactory.target;
-  console.log("TicketFactory deployed at:", ticketFactoryAddress);
+  const [deployer] = await ethers.getSigners();
 
-  console.log("Deploying EventContract...");
-  const deployedEventFactory = await hre.ethers.getContractFactory("EventContract");
-  const deployedEvent = await deployedEventFactory.deploy(ticketFactoryAddress);
-
-  console.log("EventContract deployed at:", deployedEvent.target);
+  console.log(`\nDeploying onchain NFT with account: ${deployer.address}`);
+  
+  // Deploy PeteOnChainNFT contract
+  const PeteOnChainNFT = await ethers.getContractFactory("PeteOnChainNFT");
+  const onchainNFT = await PeteOnChainNFT.deploy("PeteOnChainNFT", "PNFT", deployer.address);
+  await onchainNFT.waitForDeployment();
+  const deployedAddress = await onchainNFT.getAddress();
+  console.log(`\nOnchain NFT deployed to: ${deployedAddress}`);
 }
 
 main()
