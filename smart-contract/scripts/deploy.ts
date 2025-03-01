@@ -5,14 +5,14 @@ async function main() {
 
   const [deployer] = await ethers.getSigners();
 
-  console.log(`\nDeploying onchain NFT with account: ${deployer.address}`);
+  console.log(`\nDeploying piggy factory with account: ${deployer.address}`);
   
-  // Deploy PeteOnChainNFT contract
-  const PeteOnChainNFT = await ethers.getContractFactory("PeteOnChainNFT");
-  const onchainNFT = await PeteOnChainNFT.deploy();
-  await onchainNFT.waitForDeployment();
-  const deployedAddress = await onchainNFT.getAddress();
-  console.log(`\nOnchain NFT deployed to: ${deployedAddress}`);
+  // Deploy PiggyFactory contract
+  const PiggyFactory = await ethers.getContractFactory("PiggybankFactory");
+  const piggyFactory = await PiggyFactory.deploy();
+  await piggyFactory.waitForDeployment();
+  const deployedAddress = await piggyFactory.getAddress();
+  console.log(`\npiggy factory deployed to: ${deployedAddress}`);
 }
 
 main()
