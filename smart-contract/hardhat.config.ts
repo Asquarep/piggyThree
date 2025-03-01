@@ -29,20 +29,7 @@ const config: HardhatUserConfig = {
     }
   },
   etherscan: {
-    // apiKey: ETHERSCAN_API_KEY,
-    apiKey: {
-      "lisk_sepolia": "empty"
-    },
-    customChains: [
-      {
-        network: "lisk_sepolia",
-        chainId: 4202,
-        urls: {
-          apiURL: "https://sepolia-blockscout.lisk.com/api",
-          browserURL: "https://sepolia-blockscout.lisk.com"
-        }
-      }
-    ]
+    apiKey: ETHERSCAN_API_KEY,
   },
   sourcify: {
     enabled: false

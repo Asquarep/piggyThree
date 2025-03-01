@@ -1,13 +1,15 @@
 import { ethers } from "hardhat";
 
 async function main() {
+
+
   const [deployer] = await ethers.getSigners();
 
   console.log(`\nDeploying onchain NFT with account: ${deployer.address}`);
   
   // Deploy PeteOnChainNFT contract
   const PeteOnChainNFT = await ethers.getContractFactory("PeteOnChainNFT");
-  const onchainNFT = await PeteOnChainNFT.deploy("PeteOnChainNFT", "PNFT", deployer.address);
+  const onchainNFT = await PeteOnChainNFT.deploy();
   await onchainNFT.waitForDeployment();
   const deployedAddress = await onchainNFT.getAddress();
   console.log(`\nOnchain NFT deployed to: ${deployedAddress}`);

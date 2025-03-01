@@ -7,7 +7,7 @@ describe("PeteOnChainNFT Contract", () => {
     const [owner, user] = await ethers.getSigners();
 
     const PeteOnChainNFT = await ethers.getContractFactory("PeteOnChainNFT");
-    const nftContract = await PeteOnChainNFT.deploy("Pete", "PETE", owner.address);
+    const nftContract = await PeteOnChainNFT.deploy();
 
     return { nftContract, owner, user };
   };

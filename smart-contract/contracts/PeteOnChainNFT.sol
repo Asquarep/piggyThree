@@ -13,7 +13,7 @@ contract PeteOnChainNFT is ERC721URIStorage  {
 
 
 
-    constructor(string memory _name, string memory _symbol, address _contractAddress) ERC721 (_name, _symbol){
+    constructor() ERC721 ("Pete", "PNFT"){
     }
 
     function generateCharacter(uint256 tokenId) public pure returns(string memory){
